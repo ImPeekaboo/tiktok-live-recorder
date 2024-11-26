@@ -36,8 +36,12 @@ jobs:
             main.py
         cp dist/main* ../ttdl
 
+    - name: Compressing
+      run: |
+        tar -czvf linux-x64.tar.gz ttdl
+
     - name: Upload Release
       uses: softprops/action-gh-release@v1
       with:
-        files: ttdl
+        files: linux-x64.tar.gz
         prerelease: false
