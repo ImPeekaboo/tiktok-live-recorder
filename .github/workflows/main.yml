@@ -30,7 +30,7 @@ jobs:
         pip install -r requirements.txt
         pyinstaller --onefile \
             --add-data "cookies.json:." \
-            --add-data "check_updates:." \
+            --add-data "check_updates.py:." \
             --add-data "core:core" \
             --add-data "http_utils:http_utils" \
             --add-data "utils:utils" \
