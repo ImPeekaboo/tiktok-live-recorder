@@ -30,15 +30,16 @@ jobs:
         pip install -r requirements.txt
         pyinstaller --onefile \
             --add-data "cookies.json:." \
+            --add-data "check_updates:." \
             --add-data "core:core" \
             --add-data "http_utils:http_utils" \
             --add-data "utils:utils" \
             main.py
-        cp dist/main* ../ttdl
+        cp dist/main* ../ttlr
 
     - name: Compressing
       run: |
-        tar -czvf linux-x64.tar.gz ttdl
+        tar -czvf linux-x64.tar.gz ttlr
 
     - name: Upload Release
       uses: softprops/action-gh-release@v1
