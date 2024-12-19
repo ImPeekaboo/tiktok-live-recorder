@@ -33,7 +33,6 @@ jobs:
             --add-data "http_utils:http_utils" \
             --add-data "utils:utils" \
             --add-data "cookies.json:." \
-            --add-binary "/lib/x86_64-linux-gnu/libtinfo.so.6:." \
             main.py
         cp dist/main* ../ttlr
 
