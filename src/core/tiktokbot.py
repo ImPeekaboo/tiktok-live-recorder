@@ -101,7 +101,11 @@ class TikTok:
                 except UserNotLiveException as ex:
                     logger.info(ex)
                     logger.info(f"waiting {TimeOut.AUTOMATIC_MODE} minutes before recheck\n")
-                    time.sleep(TimeOut.AUTOMATIC_MODE * TimeOut.ONE_MINUTE)
+                    try:
+                        time.sleep(TimeOut.AUTOMATIC_MODE * TimeOut.ONE_MINUTE)
+                    except KeyboardInterrupt:
+                        logger.info("Process interrupted, stopping wait.")
+                        break
 
                 except ConnectionAbortedError:
                     logger.error(Error.CONNECTION_CLOSED_AUTOMATIC)
