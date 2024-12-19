@@ -148,8 +148,10 @@ class TikTok:
 
                 if self.duration is not None:
                     stream = ffmpeg.output(stream, output.replace("_flv.mp4", ".mp4"), c='copy', t=self.duration)
+                    stream = stream.global_args('-reconnect', '1', '-reconnect_streamed', '1', '-reconnect_delay_max', '3')
                 else:
                     stream = ffmpeg.output(stream, output.replace("_flv.mp4", ".mp4"), c='copy')
+                    stream = stream.global_args('-reconnect', '1', '-reconnect_streamed', '1', '-reconnect_delay_max', '3')
 
                 ffmpeg.run(stream, quiet=True)
             else:
