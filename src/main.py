@@ -20,10 +20,6 @@ def main():
     # print banner
     banner()
 
-    # check for updates
-    if check_updates():
-        exit()
-
     try:
         args, mode = validate_and_parse_args()
 
