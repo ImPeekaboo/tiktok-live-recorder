@@ -136,6 +136,7 @@ class TikTok:
                 self.output = self.output + "\\"
             else:
                 self.output = self.output + "/"
+            os.makedirs(self.output, exist_ok=True)
 
         output = f"{self.output if self.output else ''}TK_{self.user}_{current_date}_flv.mp4"
 
