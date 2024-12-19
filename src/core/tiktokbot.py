@@ -172,6 +172,7 @@ class TikTok:
         except ffmpeg.Error as e:
             logger.error('FFmpeg Error:')
             logger.error(e.stderr.decode('utf-8'))
+            sys.exit(1)
 
         except FileNotFoundError:
             logger.error("FFmpeg is not installed -> pip install ffmpeg-python")
