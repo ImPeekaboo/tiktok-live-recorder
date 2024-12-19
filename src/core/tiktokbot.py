@@ -107,8 +107,13 @@ class TikTok:
                     logger.error(Error.CONNECTION_CLOSED_AUTOMATIC)
                     time.sleep(TimeOut.CONNECTION_CLOSED * TimeOut.ONE_MINUTE)
 
+                except KeyboardInterrupt:
+                    logger.error('Stopped because keyboard interrupt.')
+                    break
+
                 except Exception as ex:
                     logger.error(ex)
+                    break
 
     def start_recording(self):
         """
