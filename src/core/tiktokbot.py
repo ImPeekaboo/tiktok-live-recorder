@@ -104,15 +104,20 @@ class TikTok:
                     try:
                         time.sleep(TimeOut.AUTOMATIC_MODE * TimeOut.ONE_MINUTE)
                     except KeyboardInterrupt:
-                        logger.info("Process interrupted, stopping wait.")
+                        logger.info("Process interrupted, stopping now...")
                         break
 
                 except ConnectionAbortedError:
                     logger.error(Error.CONNECTION_CLOSED_AUTOMATIC)
-                    time.sleep(TimeOut.CONNECTION_CLOSED * TimeOut.ONE_MINUTE)
+                    try:
+                        time.sleep(TimeOut.CONNECTION_CLOSED * TimeOut.ONE_MINUTE)
+                    except KeyboardInterrupt:
+                        logger.info("Process interrupted, stopping now...")
+                        break
 
                 except Exception as ex:
                     logger.error(ex)
+                    break
 
     def start_recording(self):
         """
@@ -173,7 +178,8 @@ class TikTok:
             sys.exit(1)
 
         except KeyboardInterrupt:
-            pass
+            logger.info("Process interrupted, stopping now...")
+            sys.exit(0)
 
         logger.info(f"FINISH: {output}\n")
 
